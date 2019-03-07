@@ -6,14 +6,20 @@
 #define HIPSEGMENTER_MAINWINDOW_H
 
 #include <QMainWindow>
+#include "ui_mainwindow.h"
+#include <ImageFormat.h>
 
-class MainWindow : public  QMainWindow{
-Q_OBJECT
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
 
 public:
-    MainWindow();
+    explicit MainWindow(QWidget *parent = 0);
     static int run(int argc, char *argv[]);
+    ~MainWindow();
 
+private:
+    Ui_MainWindow *ui;
 };
 
 

@@ -8,23 +8,19 @@ set(CMAKE_PREFIX_PATH "C:/Qt/5.9.1/msvc2017_64")
 #Static config
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
-
-#Find Packages - for auto deploy
-find_package( Qt5Core REQUIRED )
 
 #Create Executable
 add_executable(${PROJECT_NAME} main.cpp)
 
 #Add Subdirectories
-include_directories( ${MY_SOURCE_DIR}/UI )
-
 add_subdirectory(UI)
+add_subdirectory(Logic)
 
 #Specify that HipSegmenter needs to be linked against one or more libraries
-target_link_libraries(${PROJECT_NAME} UI)
+target_link_libraries(${PROJECT_NAME} UI Logic)
+
+#Find Packages - for auto deploy
+find_package( Qt5Core REQUIRED )
 
 #Deploy Application
 get_target_property(_qmake_executable Qt5::qmake IMPORTED_LOCATION)
