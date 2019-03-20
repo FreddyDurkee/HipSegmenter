@@ -11,13 +11,22 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    OperationBlockWidget.cpp \
+    OperationsToolBox.cpp \
+    OperationBlockLabel.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    OperationBlockWidget.h \
+    OperationsToolBox.h \
+    OperationBlockLabel.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    operationblockwidget.ui \
+    operationstoolbox.ui \
+    operationblocklabel.ui
 
 INCLUDEPATH = \
     $$PWD/../Logic
