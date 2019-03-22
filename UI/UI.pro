@@ -14,22 +14,28 @@ SOURCES += \
         mainwindow.cpp \
     OperationBlockWidget.cpp \
     OperationsToolBox.cpp \
-    OperationBlockLabel.cpp
+    OperationBlockLabel.cpp \
+    OperationsListWidget.cpp
 
 HEADERS += \
         mainwindow.h \
     OperationBlockWidget.h \
     OperationsToolBox.h \
-    OperationBlockLabel.h
+    OperationBlockLabel.h \
+    OperationsListWidget.h
 
 FORMS += \
         mainwindow.ui \
     operationblockwidget.ui \
     operationstoolbox.ui \
-    operationblocklabel.ui
+    operationblocklabel.ui \
+    operationslistwidget.ui
 
 INCLUDEPATH = \
     $$PWD/../Logic
 
 DEFINES += QT_DEPRECATED_WARNINGS
+
+RESOURCES += \
+    resource.qrc
 

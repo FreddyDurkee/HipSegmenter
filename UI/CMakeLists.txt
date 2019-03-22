@@ -14,7 +14,7 @@ set(CMAKE_AUTORCC ON)
 #QT5_WRAP_UI ( mdi_UIS_H ${mdi_UIS} )
 
 #Combine everything
-add_library(UI MainWindow.cpp MainWindow.h OperationBlockWidget.cpp OperationBlockWidget.h OperationsToolBox.cpp OperationsToolBox.h OperationBlockLabel.cpp OperationBlockLabel.h)
+add_library(UI MainWindow.cpp MainWindow.h OperationBlockWidget.cpp OperationBlockWidget.h OperationsToolBox.cpp OperationsToolBox.h OperationBlockLabel.cpp OperationBlockLabel.h OperationsListWidget.cpp OperationsListWidget.h)
 
 #Link Libraries
 target_link_libraries(UI Qt5::Widgets)

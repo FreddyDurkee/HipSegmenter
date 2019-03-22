@@ -6,7 +6,6 @@
 #include <QDrag>
 #include <QDebug>
 
-static inline QString operationBoxesMimeType() { return QStringLiteral("application/x-operationbox"); }
 
 OperationsToolBox::OperationsToolBox(QWidget *parent) :
         QToolBox(parent),
@@ -30,6 +29,7 @@ OperationsToolBox::~OperationsToolBox() {
 
 void OperationsToolBox::dragEnterEvent(QDragEnterEvent *event)
 {
+    qDebug() << "jestem w OperationsToolBox::dragEnterEvent";
     if (event->mimeData()->hasFormat(operationBoxesMimeType())) {
         if (children().contains(event->source())) {
             event->setDropAction(Qt::MoveAction);
@@ -46,6 +46,7 @@ void OperationsToolBox::dragEnterEvent(QDragEnterEvent *event)
 
 void OperationsToolBox::dragMoveEvent(QDragMoveEvent *event)
 {
+    qDebug() << "jestem w OperationsToolBox::dragMoveEvent";
     if (event->mimeData()->hasFormat(operationBoxesMimeType())) {
         if (children().contains(event->source())) {
             event->setDropAction(Qt::MoveAction);
@@ -62,6 +63,7 @@ void OperationsToolBox::dragMoveEvent(QDragMoveEvent *event)
 
 void OperationsToolBox::dropEvent(QDropEvent *event)
 {
+    qDebug() << "jestem w OperationsToolBox::dropEvent";
     if (event->mimeData()->hasFormat(operationBoxesMimeType())) {
         const QMimeData *mime = event->mimeData();
         QByteArray itemData = mime->data(operationBoxesMimeType());
@@ -73,7 +75,7 @@ void OperationsToolBox::dropEvent(QDropEvent *event)
         OperationBlockLabel *newLabel = new OperationBlockLabel(text, this);
         newLabel->move(event->pos() - offset);
         newLabel->show();
-        newLabel->setAttribute(Qt::WA_DeleteOnClose);
+//        newLabel->setAttribute(Qt::WA_DeleteOnClose);
 
         if (event->source() == this) {
             event->setDropAction(Qt::MoveAction);
@@ -81,19 +83,19 @@ void OperationsToolBox::dropEvent(QDropEvent *event)
         } else {
             event->acceptProposedAction();
         }
-    } else if (event->mimeData()->hasText()) {
-        QStringList pieces = event->mimeData()->text().split(QRegularExpression(QStringLiteral("\\s+")),
-                                                             QString::SkipEmptyParts);
-        QPoint position = event->pos();
-
-        for (const QString &piece : pieces) {
-            OperationBlockLabel *newLabel = new OperationBlockLabel(piece, this);
-            newLabel->move(position);
-            newLabel->show();
-            newLabel->setAttribute(Qt::WA_DeleteOnClose);
-
-            position += QPoint(newLabel->width(), 0);
-        }
+//    } else if (event->mimeData()->hasText()) {
+//        QStringList pieces = event->mimeData()->text().split(QRegularExpression(QStringLiteral("\\s+")),
+//                                                             QString::SkipEmptyParts);
+//        QPoint position = event->pos();
+//
+//        for (const QString &piece : pieces) {
+//            OperationBlockLabel *newLabel = new OperationBlockLabel(piece, this);
+//            newLabel->move(position);
+//            newLabel->show();
+//            newLabel->setAttribute(Qt::WA_DeleteOnClose);
+//
+//            position += QPoint(newLabel->width(), 0);
+//        }
 
         event->acceptProposedAction();
     } else {
@@ -103,6 +105,7 @@ void OperationsToolBox::dropEvent(QDropEvent *event)
 
 void OperationsToolBox::mousePressEvent(QMouseEvent *event)
 {
+    qDebug() << "jestem w OperationsToolBox::mousePressEvent";
     OperationBlockLabel *child = dynamic_cast<OperationBlockLabel*>(childAt(event->pos()));
     if (!child)
         return;
@@ -122,7 +125,7 @@ void OperationsToolBox::mousePressEvent(QMouseEvent *event)
     drag->setPixmap(*child->pixmap());
     drag->setHotSpot(hotSpot);
 
-    child->hide();
+//    child->hide();
 
     if (drag->exec(Qt::MoveAction | Qt::CopyAction, Qt::CopyAction) == Qt::MoveAction)
         child->close();

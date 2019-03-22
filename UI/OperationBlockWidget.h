@@ -2,14 +2,15 @@
 #define OPERATIONBLOCKWIDGET_H
 
 #include <QWidget>
+#include <QListWidgetItem>
 #include "ui_operationblockwidget.h"
 
-class OperationBlockWidget : public QWidget
+class OperationBlockWidget : public QWidget, public QListWidgetItem
 {
     Q_OBJECT
 
 public:
-    explicit OperationBlockWidget(QWidget *parent = 0);
+    explicit OperationBlockWidget(QListWidget *parent = 0);
     ~OperationBlockWidget();
 
     static OperationBlockWidget* of(const QString &text);

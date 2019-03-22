@@ -71,7 +71,7 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QListWidget" name="listWidget">
+      <widget class="OperationsListWidget" name="listWidget">
        <property name="minimumSize">
         <size>
          <width>500</width>
@@ -131,8 +131,13 @@
   <customwidget>
    <class>OperationsToolBox</class>
    <extends>QToolBox</extends>
-   <header location="global">OperationsToolBox.h</header>
+   <header>OperationsToolBox.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>OperationsListWidget</class>
+   <extends>QListWidget</extends>
+   <header location="global">OperationsListWidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
