@@ -1,9 +1,8 @@
 #include "OperationBlockWidget.h"
 #include <QString>
 
-OperationBlockWidget::OperationBlockWidget(QListWidget *parent) :
+OperationBlockWidget::OperationBlockWidget(QWidget *parent) :
     QWidget(parent),
-    QListWidgetItem(parent),
     ui(new Ui::OperationBlockWidget)
 {
     ui->setupUi(this);

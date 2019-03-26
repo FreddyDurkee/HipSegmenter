@@ -12,7 +12,7 @@ class OperationsToolBox : public QToolBox
 
 public:
     explicit OperationsToolBox(QWidget *parent = 0);
-    static inline QString operationBoxesMimeType(){ return QStringLiteral("application/x-operationbox"); }
+    static inline QString operationBoxLabelMimeType(){ return QStringLiteral("application/x-operationboxlabel"); }
     ~OperationsToolBox();
 
 protected:

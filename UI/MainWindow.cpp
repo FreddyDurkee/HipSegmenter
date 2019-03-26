@@ -18,6 +18,7 @@ MainWindow::~MainWindow()
 
 
 int MainWindow::run(int argc, char **argv) {
+    Q_INIT_RESOURCE(resource);
     QApplication app(argc,argv);
     MainWindow mainWindow;
     mainWindow.show();

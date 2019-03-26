@@ -2,6 +2,7 @@
 #include "ui_operationslistwidget.h"
 #include "OperationsToolBox.h"
 #include "OperationBlockWidget.h"
+#include "BlockListStyle.h"
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>
@@ -12,77 +13,97 @@ OperationsListWidget::OperationsListWidget(QWidget *parent) :
         ui(new Ui::OperationsListWidget) {
     ui->setupUi(this);
 
-    this->setAcceptDrops(true);
-
+    setAcceptDrops(true);
+    setDragEnabled(true);
+    setDefaultDropAction(Qt::TargetMoveAction);
+    setDragDropMode(QAbstractItemView::InternalMove);
+    setSelectionBehavior(SelectRows);
+    setStyle(new BlockListStyle(style()));
+    i = 1;
 }
 
 OperationsListWidget::~OperationsListWidget() {
     delete ui;
 }
 
-void OperationsListWidget::dragMoveEvent(QDragMoveEvent* e)
-{
-    qDebug() << "jestem w OperationsListWidget::dragMoveEvent";
-    if (e->mimeData()->hasFormat(OperationsToolBox::operationBoxesMimeType())) {
+void OperationsListWidget::dragMoveEvent(QDragMoveEvent *e) {
+//    qDebug() << "jestem w OperationsListWidget::dragMoveEvent";
+
+    if (e->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType())) {
+        e->setDropAction(Qt::MoveAction);
+        e->accept();
+    } else if (e->mimeData()->hasFormat(operationBoxWidgetMimeType())) {
         e->setDropAction(Qt::MoveAction);
         e->accept();
     } else
         e->ignore();
 }
 
-void OperationsListWidget::dropEvent(QDropEvent* event)
-{
-    qDebug() << "jestem w OperationsListWidget::dropEvent";
-    if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxesMimeType())) {
+void OperationsListWidget::dropEvent(QDropEvent *event) {
+//    qDebug() << "jestem w OperationsListWidget::dropEvent";
+    if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType())) {
         const QMimeData *mime = event->mimeData();
-        QByteArray itemData = mime->data(OperationsToolBox::operationBoxesMimeType());
+        QByteArray itemData = mime->data(OperationsToolBox::operationBoxLabelMimeType());
         QDataStream dataStream(&itemData, QIODevice::ReadOnly);
 
         QString text;
         dataStream >> text;
 
-        OperationBlockWidget *item = OperationBlockWidget::of(text);
-        item->setParent(this);
-        item->setSizeHint(item->size());
-        addItem(item);
-        QListWidget::setItemWidget(item,item);
-//        QListWidgetItem *listWidgetItem = new QListWidgetItem(this);
-//        addItem(listWidgetItem);
+        QString s = QString::number(this->i);
+        i += 1;
 
-//        QListWidget::setItemWidget (listWidgetItem, item);
+        OperationBlockWidget *item = OperationBlockWidget::of(text);
+        QListWidgetItem *listWidgetItem = new QListWidgetItem(s, this);
+        listWidgetItem->setSizeHint(item->size());
+        addItem(listWidgetItem);
+        setItemWidget(listWidgetItem, item);
 
         event->setDropAction(Qt::CopyAction);
         event->accept();
+
+    } else if (event->mimeData()->hasFormat(operationBoxWidgetMimeType())) {
+        QListWidget::dropEvent(event);
     } else
         event->ignore();
 }
 
-void OperationsListWidget::startDrag(Qt::DropActions supportedActions)
-{
-    qDebug() << "jestem w OperationsListWidget::startDrag";
-    QListWidgetItem* item = currentItem();
-    QMimeData* mimeData = new QMimeData;
-    QByteArray ba;
-    ba = item->text().toLatin1().data();
-    mimeData->setData(OperationsToolBox::operationBoxesMimeType(), ba);
-    QDrag* drag = new QDrag(this);
+void OperationsListWidget::startDrag(Qt::DropActions supportedActions) {
+//    qDebug() << "jestem w OperationsListWidget::startDrag";
+
+    QListWidgetItem *item = currentItem();
+    QByteArray itemData;
+    QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+    dataStream << item;
+
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setData(operationBoxWidgetMimeType(), itemData);
+
+    QDrag *drag = new QDrag(this);
     drag->setMimeData(mimeData);
+
     if (drag->exec(Qt::MoveAction) == Qt::MoveAction) {
-        delete takeItem(row(item));
-        emit itemDroped();
+//        qDebug()<<"Przeniesiono Block Widget";
     }
 }
 
-void OperationsListWidget::dragEnterEvent(QDragEnterEvent* event)
-{
-    qDebug() << "jestem w OperationsListWidget::dragEnterEvent";
-    if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxesMimeType()))
+void OperationsListWidget::dragEnterEvent(QDragEnterEvent *event) {
+//    qDebug() << "jestem w OperationsListWidget::dragEnterEvent";
+    if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType()))
+        event->accept();
+    else if (event->mimeData()->hasFormat(operationBoxWidgetMimeType()))
         event->accept();
     else
         event->ignore();
 }
 
-Qt::DropAction OperationsListWidget::supportedDropActions()
-{
+Qt::DropAction OperationsListWidget::supportedDropActions() {
     return Qt::MoveAction;
+}
+
+void OperationsListWidget::keyPressEvent(QKeyEvent *e) {
+    if(e->key() == Qt::Key_Delete){
+        qDeleteAll(selectedItems());
+    } else{
+        e->ignore();
+    }
 }

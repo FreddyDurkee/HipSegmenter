@@ -15,14 +15,16 @@ SOURCES += \
     OperationBlockWidget.cpp \
     OperationsToolBox.cpp \
     OperationBlockLabel.cpp \
-    OperationsListWidget.cpp
+    OperationsListWidget.cpp \
+    BlockListStyle.cpp
 
 HEADERS += \
         mainwindow.h \
     OperationBlockWidget.h \
     OperationsToolBox.h \
     OperationBlockLabel.h \
-    OperationsListWidget.h
+    OperationsListWidget.h \
+    BlockListStyle.h
 
 FORMS += \
         mainwindow.ui \

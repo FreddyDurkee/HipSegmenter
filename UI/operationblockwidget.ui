@@ -35,10 +35,10 @@
    <enum>Qt::LeftToRight</enum>
   </property>
   <property name="autoFillBackground">
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#OperationBlockWidget {border: 2px solid black}</string>
+   <string notr="true">QWidget#OperationBlockWidget {border: 0px solid black}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" alignment="Qt::AlignLeft">
