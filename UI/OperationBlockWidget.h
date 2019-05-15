@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "ui_operationblockwidget.h"
 
+using namespace std;
+
 class OperationBlockWidget : public QWidget
 {
     Q_OBJECT
@@ -16,11 +18,19 @@ public:
 
     void  setText(QString text);
 
+    void execute();
+
     QString  getText() const;
 
     QPixmap getMini(){
         return this->grab();
     }
+
+protected:
+    void mousePressEvent(QMouseEvent *event);
+
+private slots:
+    void on_settingButton_clicked();
 
 private:
     Ui::OperationBlockWidget *ui;

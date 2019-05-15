@@ -11,7 +11,7 @@ set(RESOURCE_FILES resource.qrc)
 
 
 #Combine everything
-add_library(UI MainWindow.cpp MainWindow.h OperationBlockWidget.cpp OperationBlockWidget.h OperationsToolBox.cpp OperationsToolBox.h OperationBlockLabel.cpp OperationBlockLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h OperationBlockWidget.cpp OperationBlockWidget.h ${RESOURCE_FILES})
+add_library(UI MainWindow.cpp MainWindow.h OperationBlockWidget.cpp OperationBlockWidget.h OperationsToolBox.cpp OperationsToolBox.h OperationBlockLabel.cpp OperationBlockLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h OperationBlockWidget.cpp OperationBlockWidget.h SettingsDialog.cpp SettingsDialog.h ${RESOURCE_FILES})
 
 #Link Libraries
 target_link_libraries(UI Qt5::Widgets)

@@ -27,8 +27,6 @@ OperationsListWidget::~OperationsListWidget() {
 }
 
 void OperationsListWidget::dragMoveEvent(QDragMoveEvent *e) {
-//    qDebug() << "jestem w OperationsListWidget::dragMoveEvent";
-
     if (e->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType())) {
         e->setDropAction(Qt::MoveAction);
         e->accept();
@@ -40,7 +38,6 @@ void OperationsListWidget::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 void OperationsListWidget::dropEvent(QDropEvent *event) {
-//    qDebug() << "jestem w OperationsListWidget::dropEvent";
     if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType())) {
         const QMimeData *mime = event->mimeData();
         QByteArray itemData = mime->data(OperationsToolBox::operationBoxLabelMimeType());
@@ -52,7 +49,7 @@ void OperationsListWidget::dropEvent(QDropEvent *event) {
         QString s = QString::number(this->i);
         i += 1;
 
-        OperationBlockWidget *item = OperationBlockWidget::of(text);
+        OperationBlockWidget *item = OperationBlockWidget::of(text+s);
         QListWidgetItem *listWidgetItem = new QListWidgetItem(s, this);
         listWidgetItem->setSizeHint(item->size());
         addItem(listWidgetItem);
@@ -68,8 +65,6 @@ void OperationsListWidget::dropEvent(QDropEvent *event) {
 }
 
 void OperationsListWidget::startDrag(Qt::DropActions supportedActions) {
-//    qDebug() << "jestem w OperationsListWidget::startDrag";
-
     QListWidgetItem *item = currentItem();
     QByteArray itemData;
     QDataStream dataStream(&itemData, QIODevice::WriteOnly);
@@ -82,12 +77,10 @@ void OperationsListWidget::startDrag(Qt::DropActions supportedActions) {
     drag->setMimeData(mimeData);
 
     if (drag->exec(Qt::MoveAction) == Qt::MoveAction) {
-//        qDebug()<<"Przeniesiono Block Widget";
     }
 }
 
 void OperationsListWidget::dragEnterEvent(QDragEnterEvent *event) {
-//    qDebug() << "jestem w OperationsListWidget::dragEnterEvent";
     if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType()))
         event->accept();
     else if (event->mimeData()->hasFormat(operationBoxWidgetMimeType()))
@@ -106,4 +99,16 @@ void OperationsListWidget::keyPressEvent(QKeyEvent *e) {
     } else{
         e->ignore();
     }
+}
+
+list<OperationBlockWidget*> * OperationsListWidget::getAllItems() {
+    list<OperationBlockWidget*> *items = new list<OperationBlockWidget*>();
+    for(int i = 0; i < this->count(); ++i)
+    {
+        QListWidgetItem *listWidgetItem = this->item(i);
+        OperationBlockWidget *item = dynamic_cast<OperationBlockWidget*>(this->itemWidget(listWidgetItem));
+        items->push_back(item);
+
+    }
+    return items;
 }

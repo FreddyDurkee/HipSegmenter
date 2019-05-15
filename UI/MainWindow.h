@@ -18,6 +18,9 @@ public:
     static int run(int argc, char *argv[]);
     ~MainWindow();
 
+private slots:
+    void on_executeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

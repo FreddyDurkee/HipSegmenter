@@ -16,7 +16,8 @@ SOURCES += \
     OperationsToolBox.cpp \
     OperationBlockLabel.cpp \
     OperationsListWidget.cpp \
-    BlockListStyle.cpp
+    BlockListStyle.cpp \
+    SettingsDialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -24,14 +25,16 @@ HEADERS += \
     OperationsToolBox.h \
     OperationBlockLabel.h \
     OperationsListWidget.h \
-    BlockListStyle.h
+    BlockListStyle.h \
+    SettingsDialog.h
 
 FORMS += \
         mainwindow.ui \
     operationblockwidget.ui \
     operationstoolbox.ui \
     operationblocklabel.ui \
-    operationslistwidget.ui
+    operationslistwidget.ui \
+    settingsdialog.ui
 
 INCLUDEPATH = \
     $$PWD/../Logic

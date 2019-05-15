@@ -29,7 +29,6 @@ OperationsToolBox::~OperationsToolBox() {
 
 void OperationsToolBox::dragEnterEvent(QDragEnterEvent *event)
 {
-    qDebug() << "jestem w OperationsToolBox::dragEnterEvent";
     if (event->mimeData()->hasFormat(operationBoxLabelMimeType())) {
         if (children().contains(event->source())) {
             event->setDropAction(Qt::MoveAction);
@@ -46,7 +45,6 @@ void OperationsToolBox::dragEnterEvent(QDragEnterEvent *event)
 
 void OperationsToolBox::dragMoveEvent(QDragMoveEvent *event)
 {
-    qDebug() << "jestem w OperationsToolBox::dragMoveEvent";
     if (event->mimeData()->hasFormat(operationBoxLabelMimeType())) {
         if (children().contains(event->source())) {
             event->setDropAction(Qt::MoveAction);
@@ -63,7 +61,6 @@ void OperationsToolBox::dragMoveEvent(QDragMoveEvent *event)
 
 void OperationsToolBox::dropEvent(QDropEvent *event)
 {
-    qDebug() << "jestem w OperationsToolBox::dropEvent";
     if (event->mimeData()->hasFormat(operationBoxLabelMimeType())) {
         const QMimeData *mime = event->mimeData();
         QByteArray itemData = mime->data(operationBoxLabelMimeType());
@@ -75,7 +72,6 @@ void OperationsToolBox::dropEvent(QDropEvent *event)
         OperationBlockLabel *newLabel = new OperationBlockLabel(text, this);
         newLabel->move(event->pos() - offset);
         newLabel->show();
-//        newLabel->setAttribute(Qt::WA_DeleteOnClose);
 
         if (event->source() == this) {
             event->setDropAction(Qt::MoveAction);
@@ -92,7 +88,6 @@ void OperationsToolBox::dropEvent(QDropEvent *event)
 
 void OperationsToolBox::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "jestem w OperationsToolBox::mousePressEvent";
     OperationBlockLabel *child = dynamic_cast<OperationBlockLabel*>(childAt(event->pos()));
     if (!child)
         return;

@@ -1,5 +1,8 @@
 #include "OperationBlockWidget.h"
 #include <QString>
+#include "SettingsDialog.h"
+#include <iostream>
+
 
 OperationBlockWidget::OperationBlockWidget(QWidget *parent) :
     QWidget(parent),
@@ -25,9 +28,29 @@ void OperationBlockWidget::setText(QString text) {
 
 QString OperationBlockWidget::getText() const
 {
+    QString name = ui->operationName->text();
     return  ui->operationName->text();
 }
 
+void OperationBlockWidget::mousePressEvent(QMouseEvent *event) {
 
+}
+
+
+
+
+
+void OperationBlockWidget::on_settingButton_clicked()
+{
+    SettingsDialog* dialog = new SettingsDialog();
+    dialog->exec();
+
+}
+
+void OperationBlockWidget::execute() {
+//    TO DO: implement method
+
+    cout << "Executed!" << this->getText().toStdString() << endl;
+}
 
 
