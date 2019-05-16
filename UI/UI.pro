@@ -12,7 +12,7 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    OperationBlockWidget.cpp \
+    BlockOperation.cpp \
     OperationsToolBox.cpp \
     OperationBlockLabel.cpp \
     OperationsListWidget.cpp \
@@ -21,7 +21,7 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    OperationBlockWidget.h \
+    BlockOperation.h \
     OperationsToolBox.h \
     OperationBlockLabel.h \
     OperationsListWidget.h \

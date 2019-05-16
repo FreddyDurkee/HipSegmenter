@@ -7,11 +7,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-set(RESOURCE_FILES resource.qrc)
+set(RESOURCE_FILES resource.qrc LoadImageBlock.cpp LoadImageBlock.h)
 
 
 #Combine everything
-add_library(UI MainWindow.cpp MainWindow.h OperationBlockWidget.cpp OperationBlockWidget.h OperationsToolBox.cpp OperationsToolBox.h OperationBlockLabel.cpp OperationBlockLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h OperationBlockWidget.cpp OperationBlockWidget.h SettingsDialog.cpp SettingsDialog.h ${RESOURCE_FILES})
+add_library(UI MainWindow.cpp MainWindow.h BlockOperation.cpp BlockOperation.h OperationsToolBox.cpp OperationsToolBox.h OperationLabel.cpp OperationLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h BlockWidget.cpp BlockWidget.h SettingsDialog.cpp SettingsDialog.h ${RESOURCE_FILES} BlockFactory.cpp BlockFactory.h)
 
 #Link Libraries
 target_link_libraries(UI Qt5::Widgets)

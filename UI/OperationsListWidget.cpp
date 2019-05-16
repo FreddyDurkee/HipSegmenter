@@ -1,8 +1,10 @@
 #include "OperationsListWidget.h"
 #include "ui_operationslistwidget.h"
 #include "OperationsToolBox.h"
-#include "OperationBlockWidget.h"
+#include "BlockOperation.h"
 #include "BlockListStyle.h"
+#include "BlockWidget.h"
+#include "BlockFactory.h"
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>
@@ -49,7 +51,7 @@ void OperationsListWidget::dropEvent(QDropEvent *event) {
         QString s = QString::number(this->i);
         i += 1;
 
-        OperationBlockWidget *item = OperationBlockWidget::of(text+s);
+        BlockWidget *item = BlockFactory::createBlock(text);
         QListWidgetItem *listWidgetItem = new QListWidgetItem(s, this);
         listWidgetItem->setSizeHint(item->size());
         addItem(listWidgetItem);
@@ -101,12 +103,12 @@ void OperationsListWidget::keyPressEvent(QKeyEvent *e) {
     }
 }
 
-list<OperationBlockWidget*> * OperationsListWidget::getAllItems() {
-    list<OperationBlockWidget*> *items = new list<OperationBlockWidget*>();
+list<BlockOperation*> * OperationsListWidget::getAllItems() {
+    list<BlockOperation*> *items = new list<BlockOperation*>();
     for(int i = 0; i < this->count(); ++i)
     {
         QListWidgetItem *listWidgetItem = this->item(i);
-        OperationBlockWidget *item = dynamic_cast<OperationBlockWidget*>(this->itemWidget(listWidgetItem));
+        BlockOperation *item = dynamic_cast<BlockOperation*>(this->itemWidget(listWidgetItem));
         items->push_back(item);
 
     }

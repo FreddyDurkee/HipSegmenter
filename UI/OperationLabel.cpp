@@ -1,5 +1,4 @@
-#include "OperationBlockLabel.h"
-#include "ui_operationblocklabel.h"
+#include "OperationLabel.h"
 #include <QPainter>
 
 OperationBlockLabel::OperationBlockLabel(const QString &text, QWidget *parent) :
