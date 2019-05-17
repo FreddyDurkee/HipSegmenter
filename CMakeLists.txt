@@ -9,12 +9,13 @@ set(CMAKE_PREFIX_PATH "C:/Qt/5.9.1/msvc2017_64")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-#Create Executable
-add_executable(${PROJECT_NAME} main.cpp)
 
 #Add Subdirectories
-add_subdirectory(UI)
 add_subdirectory(Logic)
+add_subdirectory(UI)
+
+#Create Executable
+add_executable(${PROJECT_NAME} main.cpp)
 
 #Specify that HipSegmenter needs to be linked against one or more libraries
 target_link_libraries(${PROJECT_NAME} UI Logic)

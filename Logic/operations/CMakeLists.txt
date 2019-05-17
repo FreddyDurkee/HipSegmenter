@@ -1,0 +1,1 @@
+add_library(operations BlockOperation.h BlockOperation.cpp)

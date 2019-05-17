@@ -5,7 +5,7 @@
 #include "BlockWidget.h"
 #include "SettingsDialog.h"
 
-BlockWidget::BlockWidget(QString name, BlockOperation *blkOperation, QWidget *parent) :
+BlockWidget::BlockWidget(QString name, BlockOperation* blkOperation, QWidget *parent) :
         QWidget(parent),
         ui(new Ui::BlockWidget) {
     ui->setupUi(this);
@@ -35,5 +35,13 @@ void BlockWidget::on_settingButton_clicked() {
 
 void BlockWidget::execute() {
     operation->execute();
+}
+
+shared_ptr<BlockWidget>  BlockWidget::sptr(QString qString, BlockOperation *pOperation) {
+    return make_shared<BlockWidget>(qString, pOperation);
+}
+
+unique_ptr<BlockWidget> BlockWidget::uptr(QString qString, BlockOperation *pOperation) {
+    return make_unique<BlockWidget>(qString, pOperation);
 }
 

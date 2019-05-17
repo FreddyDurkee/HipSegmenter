@@ -7,7 +7,7 @@
 
 
 #include <QtWidgets/QLabel>
-#include "BlockOperation.h"
+#include "operations/BlockOperation.h"
 
 class LoadImageBlock : public BlockOperation
 {

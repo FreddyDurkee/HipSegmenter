@@ -13,8 +13,10 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     BlockOperation.cpp \
+    BlockWidget.cpp\
+    BlockFactory.cpp\
     OperationsToolBox.cpp \
-    OperationBlockLabel.cpp \
+    OperationLabel.cpp \
     OperationsListWidget.cpp \
     BlockListStyle.cpp \
     SettingsDialog.cpp
@@ -22,17 +24,19 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     BlockOperation.h \
+    BlockWidget.h\
+    BlockFactory.h\
     OperationsToolBox.h \
-    OperationBlockLabel.h \
+    OperationLabel.h \
     OperationsListWidget.h \
     BlockListStyle.h \
     SettingsDialog.h
 
 FORMS += \
         mainwindow.ui \
-    operationblockwidget.ui \
+    blockwidget.ui\
     operationstoolbox.ui \
-    operationblocklabel.ui \
+    operationlabel.ui \
     operationslistwidget.ui \
     settingsdialog.ui
 

@@ -2,7 +2,7 @@
 // Created by Dominika on 28.02.2019.
 //
 #include "MainWindow.h"
-#include "BlockOperation.h"
+#include <operations/BlockOperation.h>
 #include <QApplication>
 
 using namespace std;

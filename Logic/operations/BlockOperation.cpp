@@ -1,6 +1,4 @@
 #include "BlockOperation.h"
-#include <QString>
-#include "SettingsDialog.h"
 #include <iostream>
 
 
@@ -20,4 +18,12 @@ void BlockOperation::execute() {
     cout << "Executed!"<< endl;
 }
 
+
+shared_ptr<BlockOperation>  BlockOperation::sptr() {
+    return make_shared<BlockOperation>();
+}
+
+unique_ptr<BlockOperation>  BlockOperation::uptr() {
+    return make_unique<BlockOperation>();
+}
 

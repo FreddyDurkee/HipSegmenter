@@ -3,7 +3,7 @@
 //
 
 #include "BlockFactory.h"
-#include "BlockOperation.h"
+#include "operations/BlockOperation.h"
 
 BlockWidget* BlockFactory::createBlock(QString operationName) {
     BlockOperation *blkOperation = new BlockOperation();

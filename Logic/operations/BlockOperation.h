@@ -1,7 +1,6 @@
 #ifndef BLOCKOPERATION_H
 #define BLOCKOPERATION_H
 
-#include <QWidget>
 #include <memory>
 
 using namespace std;

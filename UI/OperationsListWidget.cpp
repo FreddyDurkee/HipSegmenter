@@ -1,7 +1,7 @@
 #include "OperationsListWidget.h"
 #include "ui_operationslistwidget.h"
 #include "OperationsToolBox.h"
-#include "BlockOperation.h"
+#include "operations/BlockOperation.h"
 #include "BlockListStyle.h"
 #include "BlockWidget.h"
 #include "BlockFactory.h"

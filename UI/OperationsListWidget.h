@@ -3,8 +3,8 @@
 
 #include <QListWidget>
 #include <QDragMoveEvent>
+#include <operations/BlockOperation.h>
 #include "ui_operationslistwidget.h"
-#include "BlockOperation.h"
 
 using namespace std;
 
