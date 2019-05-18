@@ -7,7 +7,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-set(RESOURCE_FILES resource.qrc LoadImageBlock.cpp LoadImageBlock.h)
+set(RESOURCE_FILES resource.qrc ../Logic/operations/LoadImageBlock.cpp ../Logic/operations/LoadImageBlock.h)
 
 
 #Combine everything
