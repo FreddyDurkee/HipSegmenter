@@ -14,3 +14,7 @@ LoadImageBlock::LoadImageBlock() : BlockOperation() {
 void LoadImageBlock::execute() {
     cout << "Executed LoadImageBlock!" << endl;
 }
+
+BlockDefinition::BlockDefinition() {
+    definition["directory with images path"] = new FieldDescriptor();
+}

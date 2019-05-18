@@ -6,8 +6,12 @@
 #define HIPSEGMENTER_LOADIMAGEBLOCK_H
 
 
-#include <QtWidgets/QLabel>
-#include "operations/BlockOperation.h"
+#include <string>
+#include <map>
+#include "BlockOperation.h"
+#include "FieldDescriptor.h"
+
+using namespace std;
 
 class LoadImageBlock : public BlockOperation
 {
@@ -16,6 +20,17 @@ public:
     ~LoadImageBlock();
     void execute();
 
+};
+
+class BlockDefinition{
+public:
+    BlockDefinition();
+    ~BlockDefinition();
+
+    void validate();
+
+private:
+    map<string, FieldDescriptor*> definition;
 };
 
 

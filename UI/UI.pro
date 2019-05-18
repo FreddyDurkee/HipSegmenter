@@ -12,25 +12,27 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    BlockOperation.cpp \
     BlockWidget.cpp\
     BlockFactory.cpp\
     OperationsToolBox.cpp \
     OperationLabel.cpp \
     OperationsListWidget.cpp \
     BlockListStyle.cpp \
-    SettingsDialog.cpp
+    SettingsDialog.cpp\
+    ..\Logic\operations\BlockOperation.cpp
+
 
 HEADERS += \
         mainwindow.h \
-    BlockOperation.h \
     BlockWidget.h\
     BlockFactory.h\
     OperationsToolBox.h \
     OperationLabel.h \
     OperationsListWidget.h \
     BlockListStyle.h \
-    SettingsDialog.h
+    SettingsDialog.h\
+    ..\Logic\operations\BlockOperation.h
+
 
 FORMS += \
         mainwindow.ui \
@@ -42,6 +44,7 @@ FORMS += \
 
 INCLUDEPATH = \
     $$PWD/../Logic
+
 
 DEFINES += QT_DEPRECATED_WARNINGS
 

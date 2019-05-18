@@ -1,1 +1,1 @@
-add_library(operations BlockOperation.h BlockOperation.cpp)
+add_library(operations BlockOperation.h BlockOperation.cpp LoadImageBlock.cpp LoadImageBlock.h FieldDescriptor.cpp FieldDescriptor.h)
