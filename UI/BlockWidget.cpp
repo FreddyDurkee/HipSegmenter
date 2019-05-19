@@ -10,7 +10,8 @@ BlockWidget::BlockWidget(QString name, BlockOperation* blkOperation, QWidget *pa
         ui(new Ui::BlockWidget) {
     ui->setupUi(this);
     ui->operationName->setText(name);
-    this->operation = blkOperation;
+    operation = blkOperation;
+    settingsDialog = new SettingsDialog(operation->getConfig());
 }
 
 BlockWidget::~BlockWidget() {
@@ -28,20 +29,11 @@ void BlockWidget::mousePressEvent(QMouseEvent *event) {
 
 
 void BlockWidget::on_settingButton_clicked() {
-    SettingsDialog *dialog = new SettingsDialog();
-    dialog->exec();
-
+    settingsDialog->show();
 }
 
 void BlockWidget::execute() {
     operation->execute();
 }
 
-shared_ptr<BlockWidget>  BlockWidget::sptr(QString qString, BlockOperation *pOperation) {
-    return make_shared<BlockWidget>(qString, pOperation);
-}
-
-unique_ptr<BlockWidget> BlockWidget::uptr(QString qString, BlockOperation *pOperation) {
-    return make_unique<BlockWidget>(qString, pOperation);
-}
 

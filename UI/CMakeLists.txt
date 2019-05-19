@@ -11,7 +11,7 @@ set(RESOURCE_FILES resource.qrc ../Logic/operations/LoadImageBlock.cpp ../Logic/
 
 
 #Combine everything
-add_library(UI main.cpp MainWindow.cpp MainWindow.h OperationsToolBox.cpp OperationsToolBox.h OperationLabel.cpp OperationLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h BlockWidget.cpp BlockWidget.h SettingsDialog.cpp SettingsDialog.h ${RESOURCE_FILES} BlockFactory.cpp BlockFactory.h)
+add_library(UI main.cpp MainWindow.cpp MainWindow.h OperationsToolBox.cpp OperationsToolBox.h OperationLabel.cpp OperationLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h BlockWidget.cpp BlockWidget.h SettingsDialog.cpp SettingsDialog.h ${RESOURCE_FILES} BlockFactory.cpp BlockFactory.h FileSettingWidget.cpp FileSettingWidget.h ParameterChanger.h)
 
 #Link Libraries
 target_link_libraries(UI Qt5::Widgets)

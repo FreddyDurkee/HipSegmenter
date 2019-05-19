@@ -9,29 +9,39 @@
 #include <string>
 #include <map>
 #include "BlockOperation.h"
-#include "FieldDescriptor.h"
+#include "BlockConfig.h"
+#include "Parameter.h"
+#include "StringParameter.h"
+
 
 using namespace std;
 
+
+
 class LoadImageBlock : public BlockOperation
 {
+    /// Inner classes
+    class LoadImageConfig : public  BlockConfig{
+    public:
+        LoadImageConfig(string defaultPath) ;
+        ~LoadImageConfig();
+
+        map<string, Parameter *> getParams() override;
+
+        StringParameter* path;
+    };
+    /// Inner classes - end
+
 public:
-    explicit LoadImageBlock();
+    LoadImageBlock();
     ~LoadImageBlock();
+    BlockConfig* getConfig() override;
     void execute();
-
-};
-
-class BlockDefinition{
-public:
-    BlockDefinition();
-    ~BlockDefinition();
-
-    void validate();
-
 private:
-    map<string, FieldDescriptor*> definition;
+    LoadImageConfig* config;
+
 };
+
 
 
 #endif //HIPSEGMENTER_LOADIMAGEBLOCK_H

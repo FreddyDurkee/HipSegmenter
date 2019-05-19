@@ -8,6 +8,7 @@
 #include <QWidget>
 #include <memory>
 #include "ui_blockwidget.h"
+#include "SettingsDialog.h"
 #include "operations/BlockOperation.h"
 
 using namespace std;
@@ -39,6 +40,7 @@ private:
     Ui::BlockWidget *ui;
     QString text;
     BlockOperation *operation;
+    SettingsDialog *settingsDialog;
 };
 
 

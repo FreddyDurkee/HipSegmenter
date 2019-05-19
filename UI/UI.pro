@@ -10,6 +10,7 @@ QT += widgets
 CONFIG += c++11
 
 SOURCES += \
+    FileSettingWidget.cpp \
         main.cpp \
         mainwindow.cpp \
     BlockWidget.cpp\
@@ -19,10 +20,16 @@ SOURCES += \
     OperationsListWidget.cpp \
     BlockListStyle.cpp \
     SettingsDialog.cpp\
-    ..\Logic\operations\BlockOperation.cpp
+    ..\Logic\operations\BlockOperation.cpp\
+    ..\Logic\operations\Parameter.cpp\
+    ..\Logic\operations\StringParameter.cpp\
+    ..\Logic\operations\BlockConfig.cpp\
+    ..\Logic\operations\LoadImageBlock.cpp
 
 
 HEADERS += \
+    FileSettingWidget.h \
+    ParameterChanger.h \
         mainwindow.h \
     BlockWidget.h\
     BlockFactory.h\
@@ -31,10 +38,15 @@ HEADERS += \
     OperationsListWidget.h \
     BlockListStyle.h \
     SettingsDialog.h\
-    ..\Logic\operations\BlockOperation.h
+    ..\Logic\operations\BlockOperation.h\
+    ..\Logic\operations\Parameter.h\
+    ..\Logic\operations\StringParameter.h\
+    ..\Logic\operations\BlockConfig.h\
+    ..\Logic\operations\LoadImageBlock.h
 
 
 FORMS += \
+    FileSettingWidget.ui \
         mainwindow.ui \
     blockwidget.ui\
     operationstoolbox.ui \

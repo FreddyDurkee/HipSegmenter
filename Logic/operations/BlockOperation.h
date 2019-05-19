@@ -2,23 +2,26 @@
 #define BLOCKOPERATION_H
 
 #include <memory>
+#include <string>
+#include <map>
+#include "Parameter.h"
+#include "BlockConfig.h"
+
 
 using namespace std;
+
 
 class BlockOperation
 {
 
 public:
-    explicit BlockOperation();
+    BlockOperation();
     ~BlockOperation();
 
-    void execute();
-    static shared_ptr<BlockOperation>  sptr();
-    static unique_ptr<BlockOperation>  uptr();
+    virtual void execute();
+    virtual BlockConfig* getConfig()=0;
 
 };
 
-using BlockOperationSptr = shared_ptr<BlockOperation> ;
-using BlockOperationUptr = unique_ptr<BlockOperation> ;
 
 #endif // BLOCKOPERATION_H

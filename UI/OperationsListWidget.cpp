@@ -51,8 +51,8 @@ void OperationsListWidget::dropEvent(QDropEvent *event) {
         QString s = QString::number(this->i);
         i += 1;
 
-        BlockWidget *item = BlockFactory::createBlock(text);
-        QListWidgetItem *listWidgetItem = new QListWidgetItem(s, this);
+        BlockWidget* item = BlockFactory::createBlock(text);
+        QListWidgetItem* listWidgetItem = new QListWidgetItem(s, this);
         listWidgetItem->setSizeHint(item->size());
         addItem(listWidgetItem);
         setItemWidget(listWidgetItem, item);
@@ -103,12 +103,12 @@ void OperationsListWidget::keyPressEvent(QKeyEvent *e) {
     }
 }
 
-list<BlockOperation*> * OperationsListWidget::getAllItems() {
-    list<BlockOperation*> *items = new list<BlockOperation*>();
+list<BlockWidget*> * OperationsListWidget::getAllItems() {
+    list<BlockWidget*>* items = new list<BlockWidget*>();
     for(int i = 0; i < this->count(); ++i)
     {
-        QListWidgetItem *listWidgetItem = this->item(i);
-        BlockOperation *item = dynamic_cast<BlockOperation*>(this->itemWidget(listWidgetItem));
+        QListWidgetItem* listWidgetItem = this->item(i);
+        BlockWidget* item = dynamic_cast<BlockWidget*>(this->itemWidget(listWidgetItem));
         items->push_back(item);
 
     }
