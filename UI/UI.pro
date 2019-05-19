@@ -10,34 +10,53 @@ QT += widgets
 CONFIG += c++11
 
 SOURCES += \
+    FileSettingWidget.cpp \
         main.cpp \
         mainwindow.cpp \
-    OperationBlockWidget.cpp \
+    BlockWidget.cpp\
+    BlockFactory.cpp\
     OperationsToolBox.cpp \
-    OperationBlockLabel.cpp \
+    OperationLabel.cpp \
     OperationsListWidget.cpp \
     BlockListStyle.cpp \
-    SettingsDialog.cpp
+    SettingsDialog.cpp\
+    ..\Logic\operations\BlockOperation.cpp\
+    ..\Logic\operations\Parameter.cpp\
+    ..\Logic\operations\StringParameter.cpp\
+    ..\Logic\operations\BlockConfig.cpp\
+    ..\Logic\operations\LoadImageBlock.cpp
+
 
 HEADERS += \
+    FileSettingWidget.h \
+    ParameterChanger.h \
         mainwindow.h \
-    OperationBlockWidget.h \
+    BlockWidget.h\
+    BlockFactory.h\
     OperationsToolBox.h \
-    OperationBlockLabel.h \
+    OperationLabel.h \
     OperationsListWidget.h \
     BlockListStyle.h \
-    SettingsDialog.h
+    SettingsDialog.h\
+    ..\Logic\operations\BlockOperation.h\
+    ..\Logic\operations\Parameter.h\
+    ..\Logic\operations\StringParameter.h\
+    ..\Logic\operations\BlockConfig.h\
+    ..\Logic\operations\LoadImageBlock.h
+
 
 FORMS += \
+    FileSettingWidget.ui \
         mainwindow.ui \
-    operationblockwidget.ui \
+    blockwidget.ui\
     operationstoolbox.ui \
-    operationblocklabel.ui \
+    operationlabel.ui \
     operationslistwidget.ui \
     settingsdialog.ui
 
 INCLUDEPATH = \
     $$PWD/../Logic
+
 
 DEFINES += QT_DEPRECATED_WARNINGS
 

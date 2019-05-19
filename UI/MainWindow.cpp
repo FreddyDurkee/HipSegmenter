@@ -1,8 +1,8 @@
 //
 // Created by Dominika on 28.02.2019.
 //
+#include "BlockWidget.h"
 #include "MainWindow.h"
-#include "OperationBlockWidget.h"
 #include <QApplication>
 
 using namespace std;
@@ -31,9 +31,9 @@ int MainWindow::run(int argc, char **argv) {
 
 void MainWindow::on_executeButton_clicked()
 {
-    list<OperationBlockWidget*> *items = ui->listWidget->getAllItems();
-    //FIXME : Memore leak! Creates list by new!
-    for (OperationBlockWidget* item : *items){
+    list<BlockWidget*>* items = ui->listWidget->getAllItems();
+    //FIXME : Memory leak! Creates list by new!
+    for (BlockWidget* item : *items){
         item->execute();
     }
 }

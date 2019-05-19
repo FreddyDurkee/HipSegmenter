@@ -1,0 +1,1 @@
+add_library(operations BlockOperation.h BlockOperation.cpp LoadImageBlock.cpp LoadImageBlock.h Parameter.cpp Parameter.h BlockConfig.cpp BlockConfig.h StringParameter.cpp StringParameter.h)

@@ -2,7 +2,7 @@
 #define OPERATIONBLOCKLABEL_H
 
 #include <QLabel>
-#include "ui_operationblocklabel.h"
+#include "ui_operationlabel.h"
 
 class OperationBlockLabel : public QLabel
 {

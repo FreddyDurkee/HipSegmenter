@@ -3,8 +3,8 @@
 
 #include <QListWidget>
 #include <QDragMoveEvent>
+#include "BlockWidget.h"
 #include "ui_operationslistwidget.h"
-#include "OperationBlockWidget.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ public:
     explicit OperationsListWidget(QWidget *parent = 0);
     ~OperationsListWidget();
     static inline QString operationBoxWidgetMimeType(){ return QStringLiteral("application/x-operationboxwidget"); }
-    list<OperationBlockWidget*> * getAllItems();
+    list<BlockWidget*>* getAllItems();
 
 
 protected:

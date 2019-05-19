@@ -1,7 +1,7 @@
 #include "OperationsToolBox.h"
 #include "ui_operationstoolbox.h"
-#include "OperationBlockWidget.h"
-#include "OperationBlockLabel.h"
+#include "operations/BlockOperation.h"
+#include "OperationLabel.h"
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>
@@ -14,13 +14,10 @@ OperationsToolBox::OperationsToolBox(QWidget *parent) :
 
     setAcceptDrops(true);
 
-    OperationBlockLabel* block = new OperationBlockLabel("operation block");
+    OperationBlockLabel* loadImageBlock = new OperationBlockLabel("load image");
     QVBoxLayout* processLayout = new QVBoxLayout();
-    processLayout->addWidget(block);
+    processLayout->addWidget(loadImageBlock);
     ui->processPage->setLayout(processLayout);
-
-
-
 }
 
 OperationsToolBox::~OperationsToolBox() {
