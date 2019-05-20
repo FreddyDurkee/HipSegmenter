@@ -6,6 +6,7 @@
 #include "Parameter.h"
 #include "BlockOperation.h"
 #include "StringParameter.h"
+#include "Validators.h"
 
 
 #include <iostream>
@@ -31,15 +32,8 @@ LoadImageBlock::~LoadImageBlock() {
 }
 
 // *** definitions for LoadImageConfig
-
-namespace Validators{
-    bool always(string val){
-        return true;
-    }
-}
-
 LoadImageBlock::LoadImageConfig::LoadImageConfig(string defaultPath) {
-    this->path = new StringParameter(defaultPath, Parameter::Type::File, Validators::always );
+    this->path = new StringParameter(defaultPath, Parameter::Type::File, Validators::always<string> );
 }
 
 LoadImageBlock::LoadImageConfig::~LoadImageConfig() {

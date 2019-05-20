@@ -18,10 +18,11 @@ void SettingsDialog::createConfigRow(Parameter *config) {
     }
 }
 
-SettingsDialog::SettingsDialog(BlockConfig *blockConfig, QWidget *parent) : QDialog(parent),
+SettingsDialog::SettingsDialog(BlockConfig *blockConfig, QString windowTitle, QWidget *parent) : QDialog(parent),
                                                                             ui(new Ui::SettingsDialog),
                                                                             blockConfig(blockConfig) {
     ui->setupUi(this);
+    setWindowTitle(windowTitle);
     map<string, Parameter *> params = blockConfig->getParams();
     auto it = params.begin();
 

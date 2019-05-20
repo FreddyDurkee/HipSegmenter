@@ -11,7 +11,7 @@ BlockWidget::BlockWidget(QString name, BlockOperation* blkOperation, QWidget *pa
     ui->setupUi(this);
     ui->operationName->setText(name);
     operation = blkOperation;
-    settingsDialog = new SettingsDialog(operation->getConfig());
+    settingsDialog = new SettingsDialog(operation->getConfig(), name);
 }
 
 BlockWidget::~BlockWidget() {

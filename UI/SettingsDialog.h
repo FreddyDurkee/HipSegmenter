@@ -15,7 +15,7 @@ class SettingsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsDialog(BlockConfig* blockConfig, QWidget *parent = 0);
+    explicit SettingsDialog(BlockConfig* blockConfig, QString windowTitle, QWidget *parent = 0);
     ~SettingsDialog();
 
 private:

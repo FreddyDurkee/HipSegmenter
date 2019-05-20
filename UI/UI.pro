@@ -29,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     FileSettingWidget.h \
+    FileUtil.h \
     ParameterChanger.h \
         mainwindow.h \
     BlockWidget.h\

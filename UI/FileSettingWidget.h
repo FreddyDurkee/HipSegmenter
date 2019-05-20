@@ -1,6 +1,7 @@
 #ifndef FILESETTINGWIDGET_H
 #define FILESETTINGWIDGET_H
 
+#include <QDir>
 #include <QWidget>
 #include <operations/StringParameter.h>
 #include "ParameterChanger.h"
@@ -20,11 +21,16 @@ public:
 
 public:
     explicit FileSettingWidget(Parameter* parameter, QWidget *parent = nullptr);
-    ~FileSettingWidget();
+    ~FileSettingWidget() override;
+
+private slots:
+    void on_browse_clicked();
+    void on_files_currentRowChanged(int currentRow);
 
 private:
     Ui::FileSettingWidget *ui;
     StringParameter* parameter;
+    QDir selectedFolder;
     bool error;
 
 };
