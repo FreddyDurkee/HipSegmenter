@@ -1,6 +1,6 @@
 #include "OperationsToolBox.h"
 #include "ui_operationstoolbox.h"
-#include "operations/BlockOperation.h"
+#include "operations/Operation.h"
 #include "OperationLabel.h"
 #include <QMimeData>
 #include <QDrag>

@@ -1,7 +1,7 @@
 #include "FileSettingWidget.h"
 #include "ui_FileSettingWidget.h"
-#include <operations/StringParameter.h>
-#include <operations/Parameter.h>
+#include <operations/parameters/StringParameter.h>
+#include <operations/parameters/Parameter.h>
 #include <qfiledialog.h>
 #include <FileUtil.h>
 #include <qdebug.h>

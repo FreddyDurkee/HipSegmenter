@@ -1,10 +1,10 @@
 #include "OperationsListWidget.h"
 #include "ui_operationslistwidget.h"
 #include "OperationsToolBox.h"
-#include "operations/BlockOperation.h"
+#include "operations/Operation.h"
 #include "BlockListStyle.h"
-#include "BlockWidget.h"
-#include "BlockFactory.h"
+#include "blocks/BlockWidget.h"
+#include "blocks/BlockFactory.h"
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>

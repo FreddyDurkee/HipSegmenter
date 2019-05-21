@@ -1,22 +1,21 @@
-#ifndef BLOCKOPERATION_H
-#define BLOCKOPERATION_H
+#ifndef OPERATION_H
+#define OPERATION_H
 
 #include <memory>
 #include <string>
 #include <map>
-#include "Parameter.h"
 #include "BlockConfig.h"
 
 
 using namespace std;
 
 
-class BlockOperation
+class Operation
 {
 
 public:
-    BlockOperation();
-    ~BlockOperation();
+    Operation();
+    ~Operation();
 
     virtual void execute();
     virtual BlockConfig* getConfig()=0;
@@ -24,4 +23,4 @@ public:
 };
 
 
-#endif // BLOCKOPERATION_H
+#endif // OPERATION_H

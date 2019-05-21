@@ -5,7 +5,7 @@
 #include "BlockWidget.h"
 #include "SettingsDialog.h"
 
-BlockWidget::BlockWidget(QString name, BlockOperation* blkOperation, QWidget *parent) :
+BlockWidget::BlockWidget(QString name, Operation* blkOperation, QWidget *parent) :
         QWidget(parent),
         ui(new Ui::BlockWidget) {
     ui->setupUi(this);

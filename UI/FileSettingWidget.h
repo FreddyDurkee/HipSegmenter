@@ -3,7 +3,7 @@
 
 #include <QDir>
 #include <QWidget>
-#include <operations/StringParameter.h>
+#include <operations/parameters/StringParameter.h>
 #include "ParameterChanger.h"
 
 namespace Ui {

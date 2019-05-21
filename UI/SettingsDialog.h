@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <string>
-#include <operations/Parameter.h>
+#include <operations/parameters/Parameter.h>
 #include "ui_settingsdialog.h"
 #include <QVBoxLayout>
 #include <operations/BlockConfig.h>

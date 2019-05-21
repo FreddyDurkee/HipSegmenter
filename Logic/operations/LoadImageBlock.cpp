@@ -3,9 +3,9 @@
 //
 
 #include "LoadImageBlock.h"
-#include "Parameter.h"
-#include "BlockOperation.h"
-#include "StringParameter.h"
+#include "parameters/Parameter.h"
+#include "Operation.h"
+#include "parameters/StringParameter.h"
 #include "Validators.h"
 
 

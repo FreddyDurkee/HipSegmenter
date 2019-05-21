@@ -1,7 +1,7 @@
 #ifndef PARAMETERCHANGER_H
 #define PARAMETERCHANGER_H
 
-#include <operations/Parameter.h>
+#include <operations/parameters/Parameter.h>
 
 class ParameterChanger{
 

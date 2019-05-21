@@ -8,17 +8,17 @@
 
 #include <string>
 #include <map>
-#include "BlockOperation.h"
+#include "Operation.h"
 #include "BlockConfig.h"
-#include "Parameter.h"
-#include "StringParameter.h"
+#include "parameters/Parameter.h"
+#include "parameters/StringParameter.h"
 
 
 using namespace std;
 
 
 
-class LoadImageBlock : public BlockOperation
+class LoadImageBlock : public Operation
 {
     /// Inner classes
     class LoadImageConfig : public  BlockConfig{

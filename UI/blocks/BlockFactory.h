@@ -6,7 +6,7 @@
 #define HIPSEGMENTER_BLOCKFACTORY_H
 
 #include <QString>
-#include "BlockWidget.h"
+#include "blocks/BlockWidget.h"
 
 using namespace std;
 

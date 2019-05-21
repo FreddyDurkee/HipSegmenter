@@ -1,7 +1,7 @@
 //
 // Created by Dominika on 28.02.2019.
 //
-#include "BlockWidget.h"
+#include "blocks/BlockWidget.h"
 #include "MainWindow.h"
 #include <QApplication>
 

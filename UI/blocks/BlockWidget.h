@@ -9,7 +9,7 @@
 #include <memory>
 #include "ui_blockwidget.h"
 #include "SettingsDialog.h"
-#include "operations/BlockOperation.h"
+#include "operations/Operation.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class BlockWidget : public QWidget {
 Q_OBJECT
 
 public:
-    explicit BlockWidget(QString name, BlockOperation *blkOperation, QWidget *parent = 0);
+    explicit BlockWidget(QString name, Operation *blkOperation, QWidget *parent = 0);
 
     ~BlockWidget();
 
@@ -25,9 +25,9 @@ public:
 
     QString getText() const;
 
-    static shared_ptr<BlockWidget> sptr(QString qString, BlockOperation *pOperation);
+    static shared_ptr<BlockWidget> sptr(QString qString, Operation *pOperation);
 
-    static unique_ptr<BlockWidget> uptr(QString qString, BlockOperation *pOperation);
+    static unique_ptr<BlockWidget> uptr(QString qString, Operation *pOperation);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -39,7 +39,7 @@ private slots:
 private:
     Ui::BlockWidget *ui;
     QString text;
-    BlockOperation *operation;
+    Operation *operation;
     SettingsDialog *settingsDialog;
 };
 

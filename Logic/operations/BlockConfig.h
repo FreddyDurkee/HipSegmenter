@@ -8,7 +8,8 @@
 
 #include <string>
 #include <map>
-#include "Parameter.h"
+#include "parameters/Parameter.h"
+
 
 class BlockConfig {
 public:
