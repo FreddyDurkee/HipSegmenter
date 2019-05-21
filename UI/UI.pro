@@ -13,16 +13,16 @@ SOURCES += \
     FileSettingWidget.cpp \
         main.cpp \
         mainwindow.cpp \
-    BlockWidget.cpp\
-    BlockFactory.cpp\
+    blocks\BlockWidget.cpp\
+    blocks\BlockFactory.cpp\
     OperationsToolBox.cpp \
     OperationLabel.cpp \
     OperationsListWidget.cpp \
     BlockListStyle.cpp \
     SettingsDialog.cpp\
-    ..\Logic\operations\BlockOperation.cpp\
-    ..\Logic\operations\Parameter.cpp\
-    ..\Logic\operations\StringParameter.cpp\
+    ..\Logic\operations\Operation.cpp\
+    ..\Logic\operations\parameters\Parameter.cpp\
+    ..\Logic\operations\parameters\StringParameter.cpp\
     ..\Logic\operations\BlockConfig.cpp\
     ..\Logic\operations\LoadImageBlock.cpp
 
@@ -31,17 +31,18 @@ HEADERS += \
     FileSettingWidget.h \
     FileUtil.h \
     ParameterChanger.h \
+    blocks/BlockType.h \
         mainwindow.h \
-    BlockWidget.h\
-    BlockFactory.h\
+    blocks\BlockWidget.h\
+    blocks\BlockFactory.h\
     OperationsToolBox.h \
     OperationLabel.h \
     OperationsListWidget.h \
     BlockListStyle.h \
     SettingsDialog.h\
-    ..\Logic\operations\BlockOperation.h\
-    ..\Logic\operations\Parameter.h\
-    ..\Logic\operations\StringParameter.h\
+    ..\Logic\operations\Operation.h\
+    ..\Logic\operations\parameters\Parameter.h\
+    ..\Logic\operations\parameters\StringParameter.h\
     ..\Logic\operations\BlockConfig.h\
     ..\Logic\operations\LoadImageBlock.h
 
@@ -49,7 +50,7 @@ HEADERS += \
 FORMS += \
     FileSettingWidget.ui \
         mainwindow.ui \
-    blockwidget.ui\
+    blocks\blockwidget.ui\
     operationstoolbox.ui \
     operationlabel.ui \
     operationslistwidget.ui \

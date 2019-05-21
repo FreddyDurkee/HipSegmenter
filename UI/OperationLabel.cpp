@@ -1,7 +1,7 @@
 #include "OperationLabel.h"
 #include <QPainter>
 
-OperationBlockLabel::OperationBlockLabel(const QString &text, QWidget *parent) :
+OperationBlockLabel::OperationBlockLabel(const QString &text,BlockType type, QWidget *parent) :
         QLabel(parent),
         ui(new Ui::OperationBlockLabel) {
 
@@ -43,6 +43,7 @@ OperationBlockLabel::OperationBlockLabel(const QString &text, QWidget *parent) :
     setPixmap(QPixmap::fromImage(image));
 
     m_labelText = text;
+    m_blockType = type;
 }
 
 OperationBlockLabel::~OperationBlockLabel() {
@@ -51,4 +52,9 @@ OperationBlockLabel::~OperationBlockLabel() {
 
 QString OperationBlockLabel::labelText() const {
     return m_labelText;
+}
+
+BlockType OperationBlockLabel::blockType() const
+{
+    return m_blockType;
 }

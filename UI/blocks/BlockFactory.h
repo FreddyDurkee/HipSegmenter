@@ -7,12 +7,13 @@
 
 #include <QString>
 #include "blocks/BlockWidget.h"
+#include "BlockType.h"
 
 using namespace std;
 
 class BlockFactory {
 public:
-    static BlockWidget* createBlock(QString operationName);
+    static BlockWidget* createBlock(QString name, BlockType type);
 
 };
 

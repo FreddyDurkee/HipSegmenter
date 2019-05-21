@@ -7,11 +7,12 @@
 #include "BlockFactory.h"
 #include "operations/Operation.h"
 #include "BlockWidget.h"
+#include "BlockType.h"
 
-BlockWidget* BlockFactory::createBlock(QString operationName) {
+BlockWidget* BlockFactory::createBlock(QString name, BlockType type) {
     Operation* blkOperation;
-    if(operationName == "load image"){
+    if(type == BlockType::LOAD_IMAGE){
         blkOperation = new LoadImageBlock();
     }
-    return new BlockWidget(operationName, blkOperation);
+    return new BlockWidget(name, blkOperation);
 }

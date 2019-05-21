@@ -19,7 +19,6 @@ BlockWidget::~BlockWidget() {
 }
 
 QString BlockWidget::getText() const {
-    QString name = ui->operationName->text();
     return ui->operationName->text();
 }
 

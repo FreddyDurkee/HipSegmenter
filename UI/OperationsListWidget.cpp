@@ -8,6 +8,7 @@
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>
+#include <OperationLabel.h>
 
 
 OperationsListWidget::OperationsListWidget(QWidget *parent) :
@@ -45,13 +46,13 @@ void OperationsListWidget::dropEvent(QDropEvent *event) {
         QByteArray itemData = mime->data(OperationsToolBox::operationBoxLabelMimeType());
         QDataStream dataStream(&itemData, QIODevice::ReadOnly);
 
-        QString text;
-        dataStream >> text;
+        OperationBlockLabel blockLabelWidget;
+        dataStream >> blockLabelWidget;
 
         QString s = QString::number(this->i);
         i += 1;
 
-        BlockWidget* item = BlockFactory::createBlock(text);
+        BlockWidget* item = BlockFactory::createBlock(s + ": " + blockLabelWidget.labelText(), blockLabelWidget.blockType());
         QListWidgetItem* listWidgetItem = new QListWidgetItem(s, this);
         listWidgetItem->setSizeHint(item->size());
         addItem(listWidgetItem);
@@ -104,7 +105,7 @@ void OperationsListWidget::keyPressEvent(QKeyEvent *e) {
 }
 
 list<BlockWidget*> * OperationsListWidget::getAllItems() {
-    list<BlockWidget*>* items = new list<BlockWidget*>();
+    auto items = new list<BlockWidget*>();
     for(int i = 0; i < this->count(); ++i)
     {
         QListWidgetItem* listWidgetItem = this->item(i);
