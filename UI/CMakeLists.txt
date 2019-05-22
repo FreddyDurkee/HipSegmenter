@@ -10,8 +10,8 @@ set(CMAKE_AUTORCC ON)
 set(RESOURCE_FILES resource.qrc)
 
 #Combine everything
-add_library(UI main.cpp MainWindow.cpp MainWindow.h OperationsToolBox.cpp OperationsToolBox.h OperationLabel.cpp OperationLabel.h OperationsListWidget.cpp OperationsListWidget.h BlockListStyle.cpp BlockListStyle.h blocks/BlockWidget.cpp blocks/BlockWidget.h SettingsDialog.cpp SettingsDialog.h ${RESOURCE_FILES} blocks/BlockFactory.cpp blocks/BlockFactory.h FileSettingWidget.cpp FileSettingWidget.h ParameterChanger.h blocks/BlockWidget.h
-        blocks/BlockWidget.cpp blocks/BlockFactory.h blocks/BlockFactory.cpp)
+add_library(UI main.cpp MainWindow.cpp MainWindow.h toolbox/OperationsToolWidget.cpp toolbox/OperationsToolWidget.h toolbox/OperationNameWidget.cpp toolbox/OperationNameWidget.h execution/OperationsListWidget.cpp execution/OperationsListWidget.h execution/BlockListStyle.cpp execution/BlockListStyle.h execution/blocks/BlockWidget.cpp execution/blocks/BlockWidget.h execution/blocks/SettingsDialog.cpp execution/blocks/SettingsDialog.h ${RESOURCE_FILES} ../Logic/OperationFactory.h execution/blocks/settings/FileGetterWidget.cpp execution/blocks/settings/FileGetterWidget.h execution/blocks/settings/ParameterChanger.h execution/blocks/BlockWidget.h
+        execution/blocks/BlockWidget.cpp ../Logic/OperationFactory.h)
 
 #Link Libraries
 target_link_libraries(UI Qt5::Widgets)

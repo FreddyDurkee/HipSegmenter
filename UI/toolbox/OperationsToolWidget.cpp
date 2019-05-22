@@ -1,30 +1,30 @@
-#include "OperationsToolBox.h"
-#include "ui_operationstoolbox.h"
-#include "operations/Operation.h"
-#include "OperationLabel.h"
+#include "OperationsToolWidget.h"
+#include "ui_operationstoolwidget.h"
+#include "Operation.h"
+#include "OperationNameWidget.h"
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>
 
 
-OperationsToolBox::OperationsToolBox(QWidget *parent) :
+OperationsToolWidget::OperationsToolWidget(QWidget *parent) :
         QToolBox(parent),
-        ui(new Ui::OperationsToolBox) {
+        ui(new Ui::OperationsToolWidget) {
     ui->setupUi(this);
 
     setAcceptDrops(true);
 
-    OperationBlockLabel* loadImageBlock = new OperationBlockLabel("load image",BlockType::LOAD_IMAGE);
+    OperationNameWidget* loadImageBlock = new OperationNameWidget("load image",OperationType::LOAD_IMAGE);
     QVBoxLayout* processLayout = new QVBoxLayout();
     processLayout->addWidget(loadImageBlock);
     ui->processPage->setLayout(processLayout);
 }
 
-OperationsToolBox::~OperationsToolBox() {
+OperationsToolWidget::~OperationsToolWidget() {
     delete ui;
 }
 
-void OperationsToolBox::dragEnterEvent(QDragEnterEvent *event)
+void OperationsToolWidget::dragEnterEvent(QDragEnterEvent *event)
 {
     if (event->mimeData()->hasFormat(operationBoxLabelMimeType())) {
         if (children().contains(event->source())) {
@@ -40,7 +40,7 @@ void OperationsToolBox::dragEnterEvent(QDragEnterEvent *event)
     }
 }
 
-void OperationsToolBox::dragMoveEvent(QDragMoveEvent *event)
+void OperationsToolWidget::dragMoveEvent(QDragMoveEvent *event)
 {
     if (event->mimeData()->hasFormat(operationBoxLabelMimeType())) {
         event->ignore();
@@ -49,7 +49,7 @@ void OperationsToolBox::dragMoveEvent(QDragMoveEvent *event)
     }
 }
 
-void OperationsToolBox::dropEvent(QDropEvent *event)
+void OperationsToolWidget::dropEvent(QDropEvent *event)
 {
     if (event->mimeData()->hasFormat(operationBoxLabelMimeType())) {
         event->ignore();
@@ -58,9 +58,9 @@ void OperationsToolBox::dropEvent(QDropEvent *event)
     }
 }
 
-void OperationsToolBox::mousePressEvent(QMouseEvent *event)
+void OperationsToolWidget::mousePressEvent(QMouseEvent *event)
 {
-    OperationBlockLabel *child = dynamic_cast<OperationBlockLabel*>(childAt(event->pos()));
+    OperationNameWidget *child = dynamic_cast<OperationNameWidget*>(childAt(event->pos()));
     if (!child)
         return;
 

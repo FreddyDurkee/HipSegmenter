@@ -1,14 +1,15 @@
 #include "OperationsListWidget.h"
 #include "ui_operationslistwidget.h"
-#include "OperationsToolBox.h"
-#include "operations/Operation.h"
-#include "BlockListStyle.h"
-#include "blocks/BlockWidget.h"
-#include "blocks/BlockFactory.h"
+#include "toolBox/OperationsToolWidget.h"
+#include "Operation.h"
+#include "execution/BlockListStyle.h"
+#include "execution/blocks/BlockWidget.h"
+#include "OperationFactory.h"
 #include <QMimeData>
 #include <QDrag>
 #include <QDebug>
-#include <OperationLabel.h>
+#include <toolBox/OperationNameWidget.h>
+#include "OperationFactory.h"
 
 
 OperationsListWidget::OperationsListWidget(QWidget *parent) :
@@ -30,7 +31,7 @@ OperationsListWidget::~OperationsListWidget() {
 }
 
 void OperationsListWidget::dragMoveEvent(QDragMoveEvent *e) {
-    if (e->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType())) {
+    if (e->mimeData()->hasFormat(OperationsToolWidget::operationBoxLabelMimeType())) {
         e->setDropAction(Qt::MoveAction);
         e->accept();
     } else if (e->mimeData()->hasFormat(operationBoxWidgetMimeType())) {
@@ -41,18 +42,19 @@ void OperationsListWidget::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 void OperationsListWidget::dropEvent(QDropEvent *event) {
-    if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType())) {
+    if (event->mimeData()->hasFormat(OperationsToolWidget::operationBoxLabelMimeType())) {
         const QMimeData *mime = event->mimeData();
-        QByteArray itemData = mime->data(OperationsToolBox::operationBoxLabelMimeType());
+        QByteArray itemData = mime->data(OperationsToolWidget::operationBoxLabelMimeType());
         QDataStream dataStream(&itemData, QIODevice::ReadOnly);
 
-        OperationBlockLabel blockLabelWidget;
+        OperationNameWidget blockLabelWidget;
         dataStream >> blockLabelWidget;
 
         QString s = QString::number(this->i);
         i += 1;
 
-        BlockWidget* item = BlockFactory::createBlock(s + ": " + blockLabelWidget.labelText(), blockLabelWidget.blockType());
+        Operation* operation = OperationFactory::createBlock(blockLabelWidget.blockType());
+        BlockWidget* item = BlockWidget::of(s + ": " + blockLabelWidget.labelText(), operation);
         QListWidgetItem* listWidgetItem = new QListWidgetItem(s, this);
         listWidgetItem->setSizeHint(item->size());
         addItem(listWidgetItem);
@@ -84,7 +86,7 @@ void OperationsListWidget::startDrag(Qt::DropActions supportedActions) {
 }
 
 void OperationsListWidget::dragEnterEvent(QDragEnterEvent *event) {
-    if (event->mimeData()->hasFormat(OperationsToolBox::operationBoxLabelMimeType()))
+    if (event->mimeData()->hasFormat(OperationsToolWidget::operationBoxLabelMimeType()))
         event->accept();
     else if (event->mimeData()->hasFormat(operationBoxWidgetMimeType()))
         event->accept();

@@ -1,9 +1,9 @@
-#include "OperationLabel.h"
+#include "OperationNameWidget.h"
 #include <QPainter>
 
-OperationBlockLabel::OperationBlockLabel(const QString &text,BlockType type, QWidget *parent) :
+OperationNameWidget::OperationNameWidget(const QString &text,OperationType type, QWidget *parent) :
         QLabel(parent),
-        ui(new Ui::OperationBlockLabel) {
+        ui(new Ui::OperationNameWidget) {
 
     ui->setupUi(this);
     this->setText(text);
@@ -46,15 +46,15 @@ OperationBlockLabel::OperationBlockLabel(const QString &text,BlockType type, QWi
     m_blockType = type;
 }
 
-OperationBlockLabel::~OperationBlockLabel() {
+OperationNameWidget::~OperationNameWidget() {
     delete ui;
 }
 
-QString OperationBlockLabel::labelText() const {
+QString OperationNameWidget::labelText() const {
     return m_labelText;
 }
 
-BlockType OperationBlockLabel::blockType() const
+OperationType OperationNameWidget::blockType() const
 {
     return m_blockType;
 }

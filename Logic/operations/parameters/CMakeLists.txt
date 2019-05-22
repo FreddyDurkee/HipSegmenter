@@ -1,1 +1,1 @@
-add_library(parameters Parameter.cpp Parameter.h StringParameter.cpp StringParameter.h)
+add_library(parameters ../../Parameter.cpp ../../Parameter.h StringParameter.cpp StringParameter.h)

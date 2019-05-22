@@ -3,10 +3,10 @@
 //
 
 #include "LoadImageBlock.h"
-#include "parameters/Parameter.h"
-#include "Operation.h"
+#include "../Parameter.h"
+#include "../Operation.h"
 #include "parameters/StringParameter.h"
-#include "Validators.h"
+#include "../Validators.h"
 
 
 #include <iostream>
@@ -23,7 +23,7 @@ void LoadImageBlock::execute() {
     cout << "Executed LoadImageBlock! " << this->config->path->getData()<<endl;
 }
 
-BlockConfig* LoadImageBlock::getConfig() {
+OperationConfig* LoadImageBlock::getConfig() {
     return config;
 }
 

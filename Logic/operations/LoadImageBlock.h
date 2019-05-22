@@ -8,9 +8,9 @@
 
 #include <string>
 #include <map>
-#include "Operation.h"
-#include "BlockConfig.h"
-#include "parameters/Parameter.h"
+#include "../Operation.h"
+#include "../OperationConfig.h"
+#include "../Parameter.h"
 #include "parameters/StringParameter.h"
 
 
@@ -21,7 +21,7 @@ using namespace std;
 class LoadImageBlock : public Operation
 {
     /// Inner classes
-    class LoadImageConfig : public  BlockConfig{
+    class LoadImageConfig : public  OperationConfig{
     public:
         LoadImageConfig(string defaultPath) ;
         ~LoadImageConfig();
@@ -35,7 +35,7 @@ class LoadImageBlock : public Operation
 public:
     LoadImageBlock();
     ~LoadImageBlock();
-    BlockConfig* getConfig() override;
+    OperationConfig* getConfig() override;
     void execute();
 private:
     LoadImageConfig* config;

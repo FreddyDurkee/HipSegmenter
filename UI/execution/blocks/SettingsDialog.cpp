@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SettingsDialog.h"
 #include "ui_settingsdialog.h"
-#include "FileSettingWidget.h"
+#include "execution/blocks/settings/FileGetterWidget.h"
 
 SettingsDialog::~SettingsDialog() {
     delete ui;
@@ -12,18 +12,18 @@ SettingsDialog::~SettingsDialog() {
 
 void SettingsDialog::createConfigRow(Parameter *config) {
     if (config->getParameterType() == Parameter::Type::File) {
-        ui->widgetLayout->addWidget(new FileSettingWidget(config, this));
+        ui->widgetLayout->addWidget(new FileGetterWidget(config, this));
     } else {
         throw "[Critical] Widget type defined in config doesn't match any setting dialog in SettingDialog!";
     }
 }
 
-SettingsDialog::SettingsDialog(BlockConfig *blockConfig, QString windowTitle, QWidget *parent) : QDialog(parent),
+SettingsDialog::SettingsDialog(OperationConfig *config, QString windowTitle, QWidget *parent) : QDialog(parent),
                                                                             ui(new Ui::SettingsDialog),
-                                                                            blockConfig(blockConfig) {
+                                                                            operationConfig(config) {
     ui->setupUi(this);
     setWindowTitle(windowTitle);
-    map<string, Parameter *> params = blockConfig->getParams();
+    map<string, Parameter *> params = config->getParams();
     auto it = params.begin();
 
     while (it != params.end()) {

@@ -3,10 +3,10 @@
 
 #include <QDialog>
 #include <string>
-#include <operations/parameters/Parameter.h>
+#include <Parameter.h>
 #include "ui_settingsdialog.h"
 #include <QVBoxLayout>
-#include <operations/BlockConfig.h>
+#include <OperationConfig.h>
 
 using namespace std;
 
@@ -15,11 +15,11 @@ class SettingsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsDialog(BlockConfig* blockConfig, QString windowTitle, QWidget *parent = 0);
+    explicit SettingsDialog(OperationConfig* blockConfig, QString windowTitle, QWidget *parent = 0);
     ~SettingsDialog();
 
 private:
-    BlockConfig* blockConfig;
+    OperationConfig* operationConfig;
     void createConfigRow(Parameter *);
     Ui::SettingsDialog* ui;
     void apply();

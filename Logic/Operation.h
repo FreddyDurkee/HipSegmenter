@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 #include <map>
-#include "BlockConfig.h"
+#include "OperationConfig.h"
 
 
 using namespace std;
@@ -18,7 +18,7 @@ public:
     ~Operation();
 
     virtual void execute();
-    virtual BlockConfig* getConfig()=0;
+    virtual OperationConfig* getConfig()=0;
 
 };
 

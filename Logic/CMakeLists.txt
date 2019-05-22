@@ -2,7 +2,8 @@
 add_subdirectory(operations)
 
 #Create library
-add_library(Logic Image.cpp Image.h ImageFormat.cpp ImageFormat.h)
+add_library(Logic Image.cpp Image.h ImageFormat.cpp ImageFormat.h Parameter.cpp Parameter.h
+        OperationConfig.cpp OperationConfig.h Operation.cpp Operation.h Validators.h OperationType.h)
 
 #Link submodules
 target_link_libraries(Logic operations)

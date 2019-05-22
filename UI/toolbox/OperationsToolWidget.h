@@ -1,19 +1,19 @@
-#ifndef OPERATIONSTOOLBOX_H
-#define OPERATIONSTOOLBOX_H
+#ifndef OPERATIONSTOOLWIDGET_H
+#define OPERATIONSTOOLWIDGET_H
 
 #include <QToolBox>
 #include <QDragEnterEvent>
 #include <QDragMoveEvent>
-#include "ui_operationstoolbox.h"
+#include "ui_operationstoolwidget.h"
 
-class OperationsToolBox : public QToolBox
+class OperationsToolWidget : public QToolBox
 {
     Q_OBJECT
 
 public:
-    explicit OperationsToolBox(QWidget *parent = 0);
+    explicit OperationsToolWidget(QWidget *parent = 0);
     static inline QString operationBoxLabelMimeType(){ return QStringLiteral("application/x-operationboxlabel"); }
-    ~OperationsToolBox();
+    ~OperationsToolWidget();
 
 protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
@@ -25,7 +25,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 
 private:
-    Ui::OperationsToolBox *ui;
+    Ui::OperationsToolWidget *ui;
 };
 
-#endif // OPERATIONSTOOLBOX_H
+#endif // OPERATIONSTOOLWIDGET_H

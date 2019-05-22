@@ -10,12 +10,12 @@ QT += widgets
 CONFIG += c++11
 
 SOURCES += \
-    FileSettingWidget.cpp \
+    FileGetterWidget.cpp \
         main.cpp \
         mainwindow.cpp \
     blocks\BlockWidget.cpp\
     blocks\BlockFactory.cpp\
-    OperationsToolBox.cpp \
+    OperationsToolWidget.cpp \
     OperationLabel.cpp \
     OperationsListWidget.cpp \
     BlockListStyle.cpp \
@@ -23,19 +23,19 @@ SOURCES += \
     ..\Logic\operations\Operation.cpp\
     ..\Logic\operations\parameters\Parameter.cpp\
     ..\Logic\operations\parameters\StringParameter.cpp\
-    ..\Logic\operations\BlockConfig.cpp\
+    ..\Logic\operations\OperationConfig.cpp\
     ..\Logic\operations\LoadImageBlock.cpp
 
 
 HEADERS += \
-    FileSettingWidget.h \
+    FileGetterWidget.h \
     FileUtil.h \
     ParameterChanger.h \
     blocks/BlockType.h \
         mainwindow.h \
     blocks\BlockWidget.h\
     blocks\BlockFactory.h\
-    OperationsToolBox.h \
+    OperationsToolWidget.h \
     OperationLabel.h \
     OperationsListWidget.h \
     BlockListStyle.h \
@@ -43,12 +43,12 @@ HEADERS += \
     ..\Logic\operations\Operation.h\
     ..\Logic\operations\parameters\Parameter.h\
     ..\Logic\operations\parameters\StringParameter.h\
-    ..\Logic\operations\BlockConfig.h\
+    ..\Logic\operations\OperationConfig.h\
     ..\Logic\operations\LoadImageBlock.h
 
 
 FORMS += \
-    FileSettingWidget.ui \
+    FileGetterWidget.ui \
         mainwindow.ui \
     blocks\blockwidget.ui\
     operationstoolbox.ui \

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>OperationsToolBox</class>
- <widget class="QToolBox" name="OperationsToolBox">
+ <class>OperationsToolWidget</class>
+ <widget class="QToolBox" name="OperationsToolWidget">
   <property name="geometry">
    <rect>
     <x>0</x>

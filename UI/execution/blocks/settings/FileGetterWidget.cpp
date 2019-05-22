@@ -1,21 +1,21 @@
-#include "FileSettingWidget.h"
-#include "ui_FileSettingWidget.h"
+#include "FileGetterWidget.h"
+#include "ui_FileGetterWidget.h"
 #include <operations/parameters/StringParameter.h>
-#include <operations/parameters/Parameter.h>
+#include <Parameter.h>
 #include <qfiledialog.h>
-#include <FileUtil.h>
+#include <util/FileUtil.h>
 #include <qdebug.h>
 
 
-FileSettingWidget::FileSettingWidget(Parameter *parameter, QWidget *parent):
+FileGetterWidget::FileGetterWidget(Parameter *parameter, QWidget *parent):
         QWidget(parent),
-        ui(new Ui::FileSettingWidget), error(false)
+        ui(new Ui::FileGetterWidget), error(false)
 {
     ui->setupUi(this);
     this->parameter = dynamic_cast<StringParameter*>(parameter);
 
     if(this->parameter == NULL){
-        throw "[Critical] - Illegal Parameter Type in FileSettingWidget!";
+        throw "[Critical] - Illegal Parameter Type in FileGetterWidget!";
     }
     selectedFolder.setNameFilters(QStringList() << "*.bmp" << "*.dib" << "*.jpeg" << "*.jpg" << "*.gif" << "*.png" << "*.tif" << "*.tiff");
 
@@ -23,12 +23,12 @@ FileSettingWidget::FileSettingWidget(Parameter *parameter, QWidget *parent):
 }
 
 
-FileSettingWidget::~FileSettingWidget()
+FileGetterWidget::~FileGetterWidget()
 {
     delete ui;
 }
 
-bool FileSettingWidget::apply()
+bool FileGetterWidget::apply()
 {
     string value = ui->path->text().toStdString();
     bool isValid = parameter->isValid(value);
@@ -42,12 +42,12 @@ bool FileSettingWidget::apply()
     }
 }
 
-void FileSettingWidget::reset()
+void FileGetterWidget::reset()
 {
     ui->path->setText( QString::fromStdString(parameter->getData()));
 }
 
-void FileSettingWidget::on_browse_clicked()
+void FileGetterWidget::on_browse_clicked()
 {
     QString selectedFilePath = QFileDialog::getOpenFileName(this,
                                                       tr("Open Image Folder"), "",
@@ -67,7 +67,7 @@ void FileSettingWidget::on_browse_clicked()
 }
 
 
-void FileSettingWidget::on_files_currentRowChanged(int currentRow)
+void FileGetterWidget::on_files_currentRowChanged(int currentRow)
 {
     if(currentRow > -1){
         QString selectedFile = ui->files->item(currentRow)->text();

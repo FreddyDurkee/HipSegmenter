@@ -5,7 +5,7 @@
 #ifndef HIPSEGMENTER_STRINGPARAMETER_H
 #define HIPSEGMENTER_STRINGPARAMETER_H
 
-#include "Parameter.h"
+#include "../../Parameter.h"
 #include <string>
 #include <functional>
 

@@ -35,4 +35,8 @@ void BlockWidget::execute() {
     operation->execute();
 }
 
+BlockWidget *BlockWidget::of(QString name, Operation *operation) {
+    return new BlockWidget(name, operation);
+}
+
 
