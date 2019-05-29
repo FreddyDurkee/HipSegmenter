@@ -3,3 +3,7 @@
 //
 
 #include "Image.h"
+
+Image::Image(string filePath) {
+    image = imread(filePath, CV_LOAD_IMAGE_COLOR);
+}

@@ -21,7 +21,8 @@ target_link_libraries(UI Qt5::Gui)
 
 include_directories(../Logic)
 
-
+target_include_directories(UI PUBLIC execution "${CMAKE_CURRENT_BINARY_DIR}/UI_autogen/include")
+target_include_directories(UI PUBLIC toolbox "${CMAKE_CURRENT_BINARY_DIR}/UI_autogen/include")
 target_include_directories(UI PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_BINARY_DIR}/UI_autogen/include")
 
 
